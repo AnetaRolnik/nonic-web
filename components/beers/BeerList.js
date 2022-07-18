@@ -12,6 +12,7 @@ const BeerList = (props) => {
           alcohol={beer.alcohol}
           rating={beer.rating}
           count={beer["rating_count"]}
+          code={beer.code}
         />
       ))}
     </ul>
