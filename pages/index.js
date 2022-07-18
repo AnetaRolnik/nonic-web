@@ -1,5 +1,7 @@
+import BeerList from "../components/beers/BeerList";
+
 const HomePage = ({ featuredBeers }) => {
-  return featuredBeers.map((beer) => <span>{beer.name}</span>);
+  return <BeerList beers={featuredBeers} />;
 };
 
 export const getStaticProps = async () => {
@@ -8,7 +10,7 @@ export const getStaticProps = async () => {
 
   const allBeers = responseData.results;
   const featuredBeers = allBeers.filter(
-    (beer) => beer.rating >= 4.0 && beer["rating_count"] > 100
+    (beer) => beer.rating >= 4.0 && beer["rating_count"] >= 100
   );
 
   return {
