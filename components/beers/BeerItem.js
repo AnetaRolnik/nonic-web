@@ -2,6 +2,7 @@ import Link from "next/link";
 
 const BeerItem = (props) => {
   const { name, alcohol, rating, count, code } = props;
+  const path = `/beers/${code}`;
 
   return (
     <li>
@@ -10,7 +11,7 @@ const BeerItem = (props) => {
       <div>
         Ocena użytkowników: {rating}/{count}
       </div>
-      <Link href={`/${code}`}>Zobacz więcej</Link>
+      <Link href={path}>Zobacz więcej</Link>
     </li>
   );
 };
