@@ -1,6 +1,19 @@
+import Head from "next/head";
+
 const BeerDetailPage = ({ selectedBeer }) => {
+  const head = (
+    <Head>
+      <title>{selectedBeer.name}</title>
+      <meta
+        name="description"
+        content={`Details of beer ${selectedBeer.name}`}
+      ></meta>
+    </Head>
+  );
+
   return (
     <>
+      {head}
       <h1>{selectedBeer.name}</h1>
       <div>Alkohol: {selectedBeer.alcohol}</div>
       <div>Kod: {selectedBeer.code}</div>

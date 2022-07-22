@@ -1,7 +1,21 @@
+import Head from "next/head";
+
 import BeerList from "../components/beers/BeerList";
 
 const HomePage = ({ featuredBeers }) => {
-  return <BeerList beers={featuredBeers} />;
+  const head = (
+    <Head>
+      <title>Featured Beers</title>
+      <meta name="description" content="The best and most rated beers"></meta>
+    </Head>
+  );
+
+  return (
+    <>
+      {head}
+      <BeerList beers={featuredBeers} />
+    </>
+  );
 };
 
 export const getStaticProps = async () => {
