@@ -1,5 +1,7 @@
 import Head from "next/head";
 
+import { getAllBeers, getDetailsBeer } from "../../helpers/api-util";
+
 const BeerDetailPage = ({ selectedBeer }) => {
   const head = (
     <Head>
@@ -25,23 +27,17 @@ const BeerDetailPage = ({ selectedBeer }) => {
 export const getStaticProps = async (context) => {
   const code = context.params.beerCode;
 
-  const response = await fetch(
-    `http://localhost:8000/api-mobile/beers/${code}`
-  );
-  const responseData = await response.json();
+  const selectedBeer = await getDetailsBeer(code);
 
   return {
     props: {
-      selectedBeer: responseData,
+      selectedBeer: selectedBeer,
     },
   };
 };
 
 export const getStaticPaths = async () => {
-  const response = await fetch("http://localhost:8000/api-mobile/beers/");
-  const responseData = await response.json();
-
-  const allBeers = responseData.results;
+  const allBeers = await getAllBeers();
 
   const paths = allBeers.map((beer) => ({ params: { beerCode: beer.code } }));
 

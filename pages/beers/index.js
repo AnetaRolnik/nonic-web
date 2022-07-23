@@ -1,5 +1,6 @@
 import Head from "next/head";
 
+import { getAllBeers } from "../../helpers/api-util";
 import BeerList from "../../components/beers/BeerList";
 
 const AllBeers = ({ beers }) => {
@@ -19,10 +20,7 @@ const AllBeers = ({ beers }) => {
 };
 
 export const getStaticProps = async () => {
-  const response = await fetch("http://localhost:8000/api-mobile/beers/");
-  const responseData = await response.json();
-
-  const allBeers = responseData.results;
+  const allBeers = await getAllBeers();
 
   return {
     props: {
