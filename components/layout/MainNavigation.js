@@ -1,12 +1,18 @@
 import Link from "next/link";
 
+import classes from "./MainNavigation.module.css";
+
 const MainNavigation = () => {
   return (
-    <header>
-      <div>LOGO</div>
-      <nav>
-        <Link href="/beers">All beers</Link>
-      </nav>
+    <header className={classes.header}>
+      <div className={classes.container}>
+        <Link href="/">LOGO</Link>
+        <nav className={classes.nav}>
+          <Link href="/beers">
+            <a className={classes.item}> Wszystkie piwa</a>
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 };

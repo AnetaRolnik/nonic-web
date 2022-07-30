@@ -14,6 +14,7 @@ const HomePage = ({ featuredBeers }) => {
   return (
     <>
       {head}
+      <h1>Najlepsze z najlepszych!</h1>
       <BeerList beers={featuredBeers} />
     </>
   );

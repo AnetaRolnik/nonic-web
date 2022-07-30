@@ -1,10 +1,12 @@
 import BeerItem from "./BeerItem";
 
+import classes from "./BeerList.module.css";
+
 const BeerList = (props) => {
   const beers = props.beers;
 
   return (
-    <ul>
+    <ul className={classes.list}>
       {beers.map((beer) => (
         <BeerItem
           key={beer.id}

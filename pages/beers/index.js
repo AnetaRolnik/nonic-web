@@ -14,6 +14,7 @@ const AllBeers = ({ beers }) => {
   return (
     <>
       {head}
+      <h1>Poznaj wszystkie!</h1>
       <BeerList beers={beers} />
     </>
   );
