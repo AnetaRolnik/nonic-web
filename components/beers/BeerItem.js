@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import Card from "../ui/card";
+import Card from "../UI/Card";
 
 const BeerItem = (props) => {
   const { name, alcohol, rating, count, code } = props;

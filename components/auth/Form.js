@@ -1,9 +1,11 @@
 import { useRef } from "react";
 
+import Input from "../UI/Input";
+
 const Form = ({ signUpView }) => {
   const nameRef = useRef();
   const passwordRef = useRef();
-  const mailRef = useRef();
+  const emailRef = useRef();
   const phoneRef = useRef();
 
   const formSubmitHandler = (event) => {
@@ -14,13 +16,13 @@ const Form = ({ signUpView }) => {
     let body = {};
 
     if (signUpView) {
-      const enteredMail = mailRef.current.value;
+      const enteredEmail = emailRef.current.value;
       const eneteredPhone = phoneRef.current.value;
 
       body = {
         username: enteredName,
         password: eneteredPassword,
-        email: enteredMail,
+        email: enteredEmail,
         phone: eneteredPhone,
       };
     }
@@ -37,44 +39,12 @@ const Form = ({ signUpView }) => {
 
   return (
     <form onSubmit={formSubmitHandler}>
-      <label htmlFor="name">Nazwa</label>
-      <input
-        id="name"
-        name="name"
-        type="text"
-        ref={nameRef}
-        required={true}
-        autoComplete="on"
-      />
-      <label htmlFor="password">Hasło</label>
-      <input
-        id="password"
-        name="password"
-        type="password"
-        ref={passwordRef}
-        required={true}
-        autoComplete="on"
-      />
+      <Input label="Nazwa" name="name" type="text" ref={nameRef} />
+      <Input label="Hasło" name="password" type="password" ref={passwordRef} />
       {signUpView && (
         <>
-          <label htmlFor="mail">Email</label>
-          <input
-            id="mail"
-            name="mail"
-            type="email"
-            ref={mailRef}
-            required={true}
-            autoComplete="on"
-          />
-          <label htmlFor="phone">Numer telefonu</label>
-          <input
-            id="phone"
-            name="phone"
-            type="text"
-            ref={phoneRef}
-            required={true}
-            autoComplete="on"
-          />
+          <Input label="Email" name="email" type="email" ref={emailRef} />
+          <Input label="Telefon" name="phone" type="text" ref={phoneRef} />
         </>
       )}
       <button type="submit">
