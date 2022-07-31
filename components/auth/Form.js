@@ -34,6 +34,11 @@ const Form = ({ signUpView }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
+    }).then(() => {
+      nameRef.current.value = "";
+      passwordRef.current.value = "";
+      emailRef.current.value = "";
+      phoneRef.current.value = "";
     });
   };
 
