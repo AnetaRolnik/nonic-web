@@ -1,7 +1,9 @@
+import React from "react";
+
 import classes from "./Input.module.css";
 
-const Input = (props) => {
-  const { label, name, type, ref } = props;
+const Input = React.forwardRef((props, ref) => {
+  const { label, name, type } = props;
 
   return (
     <div>
@@ -16,6 +18,6 @@ const Input = (props) => {
       />
     </div>
   );
-};
+});
 
 export default Input;
