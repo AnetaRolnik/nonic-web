@@ -11,7 +11,7 @@ const MainNavigation = () => {
           <Link href="/beers">
             <a className={classes.item}>Wszystkie piwa</a>
           </Link>
-          <Link href="/sign-in">
+          <Link href="/auth">
             <a className={classes.item}>Zaloguj się</a>
           </Link>
         </nav>

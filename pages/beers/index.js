@@ -1,7 +1,7 @@
 import Head from "next/head";
 
 import { getAllBeers } from "../../helpers/api-util";
-import BeerList from "../../components/beers/BeerList";
+import BeerList from "../../components/Beers/BeerList";
 
 const AllBeers = ({ beers }) => {
   const head = (

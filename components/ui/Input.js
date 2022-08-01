@@ -13,8 +13,8 @@ const Input = React.forwardRef((props, ref) => {
         name={name}
         type={type}
         ref={ref}
-        required={true}
-        autoComplete="on"
+        required
+        autoComplete="true"
       />
     </div>
   );

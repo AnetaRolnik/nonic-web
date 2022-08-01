@@ -1,7 +1,7 @@
 import Head from "next/head";
 
-import Container from "../components/layout/Container";
-import MainNavigation from "../components/layout/MainNavigation";
+import Container from "../components/Layout/Container";
+import MainNavigation from "../components/Layout/MainNavigation";
 
 import "../styles/globals.css";
 
