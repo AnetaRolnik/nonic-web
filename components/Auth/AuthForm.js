@@ -1,8 +1,13 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+import { useRouter } from "next/router";
 
 import Input from "../UI/Input";
+import AuthContext from "../../store/auth-context";
 
 const AuthForm = ({ isLogin }) => {
+  const authCtx = useContext(AuthContext);
+  const router = useRouter();
+
   const nameRef = useRef();
   const passwordRef = useRef();
   const emailRef = useRef();
@@ -29,7 +34,10 @@ const AuthForm = ({ isLogin }) => {
         body: JSON.stringify(loginData),
       })
         .then((response) => response.json())
-        .then((responseData) => console.log(responseData.access));
+        .then((responseData) => {
+          authCtx.login(responseData.access);
+          router.push("/");
+        });
     } else {
       const enteredEmail = emailRef.current.value;
       const eneteredPhone = phoneRef.current.value;
