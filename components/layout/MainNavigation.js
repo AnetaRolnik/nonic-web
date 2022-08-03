@@ -24,9 +24,7 @@ const MainNavigation = () => {
           )}
           {authCtx.isLoggedIn && (
             <Link href="/">
-              <a className={classes.item} onClick={logoutClickHandler}>
-                Ulubione
-              </a>
+              <a className={classes.item}>Ulubione</a>
             </Link>
           )}
           {authCtx.isLoggedIn && (
