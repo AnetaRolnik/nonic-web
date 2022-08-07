@@ -2,12 +2,17 @@ import Link from "next/link";
 import { useContext } from "react";
 
 import AuthContext from "../../store/auth-context";
+import SnackbarContext from "../../store/snackbar-contex";
 import classes from "./MainNavigation.module.css";
 
 const MainNavigation = () => {
   const authCtx = useContext(AuthContext);
+  const snackbarCtx = useContext(SnackbarContext);
 
-  const logoutClickHandler = () => authCtx.logout();
+  const logoutClickHandler = () => {
+    authCtx.logout();
+    snackbarCtx.show("Pomyślnie wylogowano!");
+  };
 
   return (
     <header className={classes.header}>
