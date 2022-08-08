@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Input from "../UI/Input";
 import AuthContext from "../../store/auth-context";
 import SnackbarContext from "../../store/snackbar-contex";
+import classes from "./AuthForm.module.css";
 
 const AuthForm = ({ isLogin }) => {
   const authCtx = useContext(AuthContext);
@@ -72,7 +73,7 @@ const AuthForm = ({ isLogin }) => {
   };
 
   return (
-    <form onSubmit={formSubmitHandler}>
+    <form onSubmit={formSubmitHandler} className={classes.form}>
       <Input label="Nazwa" name="name" type="text" ref={nameRef} />
       <Input label="Hasło" name="password" type="password" ref={passwordRef} />
       {!isLogin && (
@@ -81,7 +82,7 @@ const AuthForm = ({ isLogin }) => {
           <Input label="Telefon" name="phone" type="text" ref={phoneRef} />
         </>
       )}
-      <button type="submit">
+      <button type="submit" className={classes.btn}>
         {isLogin ? "Zaloguj się" : "Zarejestruj się"}
       </button>
     </form>

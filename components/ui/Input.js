@@ -6,8 +6,10 @@ const Input = React.forwardRef((props, ref) => {
   const { label, name, type } = props;
 
   return (
-    <div>
-      <label htmlFor={name}>{label}</label>
+    <div className={classes["form-control"]}>
+      <label htmlFor={name} className={classes.label}>
+        {label}
+      </label>
       <input
         id={name}
         name={name}
@@ -15,6 +17,7 @@ const Input = React.forwardRef((props, ref) => {
         ref={ref}
         required
         autoComplete="true"
+        className={classes.input}
       />
     </div>
   );

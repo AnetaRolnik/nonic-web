@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import AuthForm from "../components/Auth/AuthForm";
+import classes from "../styles/Auth.module.css";
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -13,8 +14,10 @@ const AuthPage = () => {
     <>
       <h1>{isLogin ? "Logowanie" : "Rejestracja"}</h1>
       <AuthForm isLogin={isLogin} />
-      <button onClick={switchAuthModeHandler}>
-        {isLogin ? "Utwórz konto" : "Mam już konto"}
+      <button onClick={switchAuthModeHandler} className={classes.btn}>
+        {isLogin
+          ? "Nie masz konta? Zarejestruj się!"
+          : "Masz już konto? Zaloguj się!"}
       </button>
     </>
   );
