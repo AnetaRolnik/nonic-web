@@ -11,7 +11,7 @@ const MainNavigation = () => {
 
   const logoutClickHandler = () => {
     authCtx.logout();
-    snackbarCtx.show("Pomyślnie wylogowano!");
+    snackbarCtx.open("Pomyślnie wylogowano!");
   };
 
   return (

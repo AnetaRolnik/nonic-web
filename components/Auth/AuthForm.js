@@ -3,9 +3,12 @@ import { useRouter } from "next/router";
 
 import Input from "../UI/Input";
 import AuthContext from "../../store/auth-context";
+import SnackbarContext from "../../store/snackbar-contex";
 
 const AuthForm = ({ isLogin }) => {
   const authCtx = useContext(AuthContext);
+  const snackbarCtx = useContext(SnackbarContext);
+
   const router = useRouter();
 
   const nameRef = useRef();
@@ -37,6 +40,7 @@ const AuthForm = ({ isLogin }) => {
         .then((responseData) => {
           authCtx.login(responseData.access);
           router.push("/");
+          snackbarCtx.open("Zalogowano się pomyślnie!");
         });
     } else {
       const enteredEmail = emailRef.current.value;
@@ -56,12 +60,14 @@ const AuthForm = ({ isLogin }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(signupData),
-      }).then(() => {
-        nameRef.current.value = "";
-        passwordRef.current.value = "";
-        emailRef.current.value = "";
-        phoneRef.current.value = "";
-      });
+      })
+        .then(() => {
+          nameRef.current.value = "";
+          passwordRef.current.value = "";
+          emailRef.current.value = "";
+          phoneRef.current.value = "";
+        })
+        .then(() => snackbarCtx.open("Rejestracja przebiegła pomyślnie!"));
     }
   };
 

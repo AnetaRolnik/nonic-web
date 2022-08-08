@@ -3,15 +3,20 @@ import React, { useState } from "react";
 const SnackbarContext = React.createContext({
   message: null,
   snackbar: false,
-  show: (message) => {},
+  open: (message) => {},
+  close: () => {},
 });
 
 export const SnackbarContextProvider = (props) => {
   const [message, setMessage] = useState(null);
 
-  const showSnackbarHandler = (message) => {
+  const openSnackbarHandler = (message) => {
     setMessage(message);
-    setTimeout(() => setMessage(null), 2000);
+    setTimeout(() => setMessage(null), 2500);
+  };
+
+  const closeSnackbarHandler = () => {
+    setMessage(null);
   };
 
   const visbileSnackbar = !!message;
@@ -19,7 +24,8 @@ export const SnackbarContextProvider = (props) => {
   const contextValue = {
     message: message,
     snackbar: visbileSnackbar,
-    show: showSnackbarHandler,
+    open: openSnackbarHandler,
+    close: closeSnackbarHandler,
   };
 
   return (

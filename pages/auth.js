@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import AuthForm from "../components/Auth/AuthForm";
 
-const Auth = () => {
+const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   const switchAuthModeHandler = () => {
@@ -20,4 +20,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default AuthPage;
