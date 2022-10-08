@@ -1,5 +1,7 @@
-export const getAllBeers = async () => {
-  const response = await fetch("http://localhost:8000/api-mobile/beers/");
+export const getAllBeers = async (offset = 0, limit = 12) => {
+  const response = await fetch(
+    `http://localhost:8000/api-mobile/beers/?offset=${offset}&limit=${limit}`
+  );
   const responseData = await response.json();
 
   const allBeers = responseData.results;

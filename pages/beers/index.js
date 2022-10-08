@@ -1,9 +1,16 @@
 import Head from "next/head";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { useState } from "react";
 
 import { getAllBeers } from "../../helpers/api-util";
 import BeerList from "../../components/Beers/BeerList";
 
 const AllBeersPage = ({ beers }) => {
+  const [items, setItems] = useState(beers);
+  const [noMore, setNoMore] = useState(true);
+  const [offset, setOffset] = useState(12);
+  const [limit, setLimit] = useState(24);
+
   const head = (
     <Head>
       <title>All Beers</title>
@@ -11,17 +18,36 @@ const AllBeersPage = ({ beers }) => {
     </Head>
   );
 
+  const fetchData = async () => {
+    const allBeers = await getAllBeers(offset, limit);
+
+    setItems([...items, ...allBeers]);
+
+    allBeers.length === 0 && setNoMore(false);
+
+    setOffset(offset + 12);
+    setLimit(limit + 12);
+  };
+
   return (
     <>
       {head}
       <h1>Co kto lubi!</h1>
-      <BeerList beers={beers} />
+      <InfiniteScroll
+        dataLength={items.length} //This is important field to render the next data
+        next={fetchData}
+        hasMore={noMore}
+        loader={<h4>Loading...</h4>}
+        endMessage={"Koniec"}
+      >
+        <BeerList beers={items} />
+      </InfiniteScroll>
     </>
   );
 };
 
 export const getStaticProps = async () => {
-  const allBeers = await getAllBeers();
+  const allBeers = await getAllBeers(0);
 
   return {
     props: {
