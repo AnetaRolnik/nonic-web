@@ -9,7 +9,6 @@ const AllBeersPage = ({ beers }) => {
   const [items, setItems] = useState(beers);
   const [noMore, setNoMore] = useState(true);
   const [offset, setOffset] = useState(12);
-  const [limit, setLimit] = useState(24);
 
   const head = (
     <Head>
@@ -19,14 +18,12 @@ const AllBeersPage = ({ beers }) => {
   );
 
   const fetchData = async () => {
-    const allBeers = await getAllBeers(offset, limit);
-
-    setItems([...items, ...allBeers]);
+    const allBeers = await getAllBeers(offset);
 
     allBeers.length === 0 && setNoMore(false);
 
+    setItems([...items, ...allBeers]);
     setOffset(offset + 12);
-    setLimit(limit + 12);
   };
 
   return (
@@ -47,7 +44,7 @@ const AllBeersPage = ({ beers }) => {
 };
 
 export const getStaticProps = async () => {
-  const allBeers = await getAllBeers(0);
+  const allBeers = await getAllBeers();
 
   return {
     props: {
