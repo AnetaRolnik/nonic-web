@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import SnackbarContext from "../../store/snackbar-contex";
 
-import classes from "./Snackbar.module.css";
+import classes from "./Snackbar.module.scss";
 
 const Snackbar = () => {
   const snackbarCtx = useContext(SnackbarContext);

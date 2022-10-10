@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import AuthForm from "../components/Auth/AuthForm";
-import classes from "../styles/Auth.module.css";
+import classes from "../styles/Auth.module.scss";
 
 const AuthPage = () => {
   const [isLogin, setIsLogin] = useState(true);

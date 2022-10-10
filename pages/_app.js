@@ -8,7 +8,7 @@ import SnackbarContext, {
 import Container from "../components/Layout/Container";
 import MainNavigation from "../components/Layout/MainNavigation";
 
-import "../styles/globals.css";
+import "../styles/globals.scss";
 import Snackbar from "../components/UI/Snackbar";
 
 const AppBody = (props) => {

@@ -1,6 +1,6 @@
 import BeerItem from "./BeerItem";
 
-import classes from "./BeerList.module.css";
+import classes from "./BeerList.module.scss";
 
 const BeerList = (props) => {
   const beers = props.beers;

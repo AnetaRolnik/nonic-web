@@ -1,6 +1,6 @@
 import React from "react";
 
-import classes from "./Input.module.css";
+import classes from "./Input.module.scss";
 
 const Input = React.forwardRef((props, ref) => {
   const { label, name, type } = props;

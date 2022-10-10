@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Input from "../UI/Input";
 import AuthContext from "../../store/auth-context";
 import SnackbarContext from "../../store/snackbar-contex";
-import classes from "./AuthForm.module.css";
+import classes from "./AuthForm.module.scss";
 
 const AuthForm = ({ isLogin }) => {
   const authCtx = useContext(AuthContext);

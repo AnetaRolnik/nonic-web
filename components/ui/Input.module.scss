@@ -15,13 +15,13 @@
   padding: 8px 12px;
   border: 1px solid #a4a3a3;
   transition: border-color 0.2s, background-color 0.2s;
-}
 
-.input:hover {
-  background-color: #f9f9f9;
-}
+  &:hover {
+    background-color: #f9f9f9;
+  }
 
-.input:focus {
-  outline: none;
-  border-color: #5d5d5d;
+  &:focus {
+    outline: none;
+    border-color: #5d5d5d;
+  }
 }

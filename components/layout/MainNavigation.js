@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 import AuthContext from "../../store/auth-context";
 import SnackbarContext from "../../store/snackbar-contex";
-import classes from "./MainNavigation.module.css";
+import classes from "./MainNavigation.module.scss";
 
 const MainNavigation = () => {
   const authCtx = useContext(AuthContext);
