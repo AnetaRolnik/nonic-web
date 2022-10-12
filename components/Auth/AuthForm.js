@@ -37,12 +37,18 @@ const AuthForm = ({ isLogin }) => {
         },
         body: JSON.stringify(loginData),
       })
-        .then((response) => response.json())
+        .then((response) => {
+          if (!response.ok) {
+            return Promise.reject(`Http error: ${response.status}`);
+          }
+          return response.json();
+        })
         .then((responseData) => {
           authCtx.login(responseData.access);
           router.push("/");
           snackbarCtx.open("Zalogowano się pomyślnie!");
-        });
+        })
+        .catch((error) => console.error(error));
     } else {
       const enteredEmail = emailRef.current.value;
       const eneteredPhone = phoneRef.current.value;
@@ -62,13 +68,17 @@ const AuthForm = ({ isLogin }) => {
         },
         body: JSON.stringify(signupData),
       })
-        .then(() => {
+        .then((response) => {
+          if (!response.ok) {
+            return Promise.reject(`Http error: ${response.status}`);
+          }
           nameRef.current.value = "";
           passwordRef.current.value = "";
           emailRef.current.value = "";
           phoneRef.current.value = "";
+          snackbarCtx.open("Rejestracja przebiegła pomyślnie!");
         })
-        .then(() => snackbarCtx.open("Rejestracja przebiegła pomyślnie!"));
+        .catch((error) => console.error(error));
     }
   };
 
