@@ -27,3 +27,16 @@ export const getDetailsBeer = async (code) => {
 
   return responseData;
 };
+
+export const getFavorites = async (userToken) => {
+  const response = await fetch(
+    "http://localhost:8000/api-mobile/user/favorites/",
+    {
+      headers: { Authorization: `Bearer ${userToken}` },
+    }
+  );
+
+  const responseData = await response.json();
+
+  return responseData;
+};

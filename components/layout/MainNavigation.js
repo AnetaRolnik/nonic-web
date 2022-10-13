@@ -28,7 +28,7 @@ const MainNavigation = () => {
             </Link>
           )}
           {authCtx.isLoggedIn && (
-            <Link href="/">
+            <Link href="/beers/favorites">
               <a className={classes.item}>Ulubione</a>
             </Link>
           )}
